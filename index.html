@@ -3,31 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>CloudPath — Certification Coaching</title>
+<title>CloudPath — Cloud Certification Training</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
   tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          canvas:  '#FCFCFD',
-          surface: '#FFFFFF',
-          line:    '#E9E9EE',
-          ink:     '#15161B',
-          muted:   '#6A6E78',
-          accent:  '#4F46E5',
-          accentSoft: '#EEECFF',
-          aws:   '#F0900A',
-          azure: '#0A7BE0',
-          gcp:   '#4285F4',
-        },
-        fontFamily: {
-          display: ['"Space Grotesk"', 'sans-serif'],
-          body:    ['Inter', 'sans-serif'],
-        },
-      },
-    },
+    theme: { extend: {
+      colors: { canvas:'#FCFCFD', surface:'#FFFFFF', line:'#E9E9EE', ink:'#15161B', muted:'#6A6E78',
+        accent:'#4F46E5', accentSoft:'#EEECFF', aws:'#F0900A', azure:'#0A7BE0', gcp:'#4285F4' },
+      fontFamily: { display:['"Space Grotesk"','sans-serif'], body:['Inter','sans-serif'] },
+    }},
   };
 </script>
 
@@ -36,83 +21,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
 <style>
-  html { scroll-behavior: smooth; }
-  body {
-    background: #FCFCFD;
-    color: #15161B;
-    font-family: 'Inter', sans-serif;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* page transitions — gentle */
-  .page { display: none; }
-  .page.active { display: block; animation: fade .5s ease; }
-  @keyframes fade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-
-  /* subtle load reveal */
-  .reveal { opacity: 0; transform: translateY(14px); }
-  .reveal.in { opacity: 1; transform: none; transition: opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1); }
-
-  /* nav underline */
-  .navlink { color: #6A6E78; font-size: 15px; transition: color .2s; position: relative; }
-  .navlink:hover { color: #15161B; }
-  .navlink.active { color: #15161B; }
-  .navlink.active::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
-    background: #4F46E5; border-radius: 2px;
-  }
-
-  /* cards — minimal, soft */
-  .card {
-    background: #FFFFFF;
-    border: 1px solid #E9E9EE;
-    border-radius: 16px;
-    transition: transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s, border-color .3s;
-    cursor: pointer;
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    border-color: #D9D9E2;
-    box-shadow: 0 18px 40px -24px rgba(20,20,40,0.28);
-  }
-  .card:focus-visible { outline: 2px solid #4F46E5; outline-offset: 3px; }
-
-  .dotmark span { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
-
-  /* faq */
-  .faq-item { border-bottom: 1px solid #E9E9EE; }
-  .faq-q { cursor: pointer; }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-  .faq-item.open .faq-a { max-height: 220px; }
-  .faq-item.open .faq-icon { transform: rotate(45deg); }
-  .faq-icon { transition: transform .3s; }
-
-  /* modal */
-  .modal { display: none; position: fixed; inset: 0; z-index: 60; }
-  .modal.open { display: flex; }
-  .modal-backdrop { position: absolute; inset: 0; background: rgba(20,20,35,0.35); backdrop-filter: blur(3px); }
-  .modal-card {
-    position: relative; margin: auto; max-width: 480px; width: 92%;
-    background: #FFFFFF; border-radius: 20px; border: 1px solid #E9E9EE;
-    box-shadow: 0 40px 80px -30px rgba(20,20,40,0.4);
-    animation: pop .35s cubic-bezier(.22,.61,.36,1);
-  }
-  @keyframes pop { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
-
-  /* profile ring */
-  .ring { background: conic-gradient(from 0deg, #4F46E5, #0A7BE0, #4F46E5); animation: spin 12s linear infinite; }
-  @keyframes spin { to { transform: rotate(360deg); } }
-
+  html { scroll-behavior:smooth; }
+  body { background:#FCFCFD; color:#15161B; font-family:'Inter',sans-serif; -webkit-font-smoothing:antialiased; }
+  .page { display:none; }
+  .page.active { display:block; animation:fade .5s ease; }
+  @keyframes fade { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:none} }
+  .reveal { opacity:0; transform:translateY(14px); }
+  .reveal.in { opacity:1; transform:none; transition:opacity .7s ease, transform .7s cubic-bezier(.22,.61,.36,1); }
+  .navlink { color:#6A6E78; font-size:15px; transition:color .2s; position:relative; cursor:pointer; }
+  .navlink:hover { color:#15161B; }
+  .navlink.active { color:#15161B; }
+  .navlink.active::after { content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px; background:#4F46E5; border-radius:2px; }
+  .card { background:#fff; border:1px solid #E9E9EE; border-radius:16px;
+    transition:transform .3s cubic-bezier(.22,.61,.36,1), box-shadow .3s, border-color .3s; cursor:pointer; }
+  .card:hover { transform:translateY(-4px); border-color:#D9D9E2; box-shadow:0 18px 40px -24px rgba(20,20,40,0.28); }
+  .card:focus-visible { outline:2px solid #4F46E5; outline-offset:3px; }
+  .dotmark span { width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .path { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+  .path span.step { font-size:11px; color:#6A6E78; background:#F4F4F8; border:1px solid #ECECF1;
+    padding:3px 8px; border-radius:999px; white-space:nowrap; }
+  .path span.arrow { color:#C7C7D1; font-size:11px; }
+  .faq-item { border-bottom:1px solid #E9E9EE; }
+  .faq-q { cursor:pointer; }
+  .faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+  .faq-item.open .faq-a { max-height:240px; }
+  .faq-item.open .faq-icon { transform:rotate(45deg); }
+  .faq-icon { transition:transform .3s; }
+  .modal { display:none; position:fixed; inset:0; z-index:60; }
+  .modal.open { display:flex; }
+  .modal-backdrop { position:absolute; inset:0; background:rgba(20,20,35,0.35); backdrop-filter:blur(3px); }
+  .modal-card { position:relative; margin:auto; max-width:480px; width:92%; background:#fff; border-radius:20px;
+    border:1px solid #E9E9EE; box-shadow:0 40px 80px -30px rgba(20,20,40,0.4);
+    animation:pop .35s cubic-bezier(.22,.61,.36,1); max-height:90vh; overflow-y:auto; }
+  @keyframes pop { from{opacity:0;transform:translateY(14px) scale(.98)} to{opacity:1;transform:none} }
+  .ring { background:conic-gradient(from 0deg,#4F46E5,#0A7BE0,#4F46E5); animation:spin 12s linear infinite; }
+  @keyframes spin { to{transform:rotate(360deg)} }
   @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation: none !important; transition: none !important; }
-    .reveal { opacity: 1; transform: none; }
+    *, *::before, *::after { animation:none !important; transition:none !important; }
+    .reveal { opacity:1; transform:none; }
   }
 </style>
 </head>
 
 <body class="font-body">
 
-<!-- ===================== NAV ===================== -->
 <header class="sticky top-0 z-50 bg-canvas/85 backdrop-blur-md border-b border-line">
   <nav class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
     <button onclick="go('home')" class="flex items-center gap-2.5">
@@ -129,305 +81,256 @@
 
 <main>
 
-<!-- ===================== HOME ===================== -->
 <section id="home" class="page active">
-
-  <!-- Hero -->
-  <div class="max-w-5xl mx-auto px-6 pt-28 pb-20 text-center">
-    <p class="reveal text-accent text-sm font-500 mb-5 tracking-wide">Pass the exam · land the role</p>
+  <div class="max-w-5xl mx-auto px-6 pt-28 pb-16 text-center">
+    <p class="reveal text-accent text-sm font-500 mb-5 tracking-wide">Train &middot; certify &middot; get hired</p>
     <h1 class="reveal font-display font-600 text-4xl md:text-6xl leading-[1.08] tracking-tight max-w-3xl mx-auto">
-      Get cloud-certified, the guided way.
+      Cloud certification training that leads to a career.
     </h1>
     <p class="reveal text-muted text-lg leading-relaxed max-w-xl mx-auto mt-6">
-      Clear, hands-on coaching for AWS, Azure, and Google Cloud certifications — plus real help getting hired once you pass.
+      Hands-on training for AWS, Azure, and Google Cloud &mdash; each track mapped to a real career path, so you know exactly where it takes you.
     </p>
     <div class="reveal mt-9 flex items-center justify-center gap-3">
-      <a href="#tracks" class="px-6 py-3 rounded-full bg-accent text-white font-500 hover:bg-accent/90 transition">Browse tracks</a>
-      <a onclick="go('about')" class="px-6 py-3 rounded-full border border-line text-ink font-500 hover:border-ink/30 transition cursor-pointer">Meet your coach</a>
+      <a href="#tracks" class="px-6 py-3 rounded-full bg-accent text-white font-500 hover:bg-accent/90 transition">Browse training</a>
+      <a onclick="go('about')" class="px-6 py-3 rounded-full border border-line text-ink font-500 hover:border-ink/30 transition cursor-pointer">Meet your instructor</a>
     </div>
   </div>
 
-  <!-- Tracks -->
-  <div id="tracks" class="max-w-5xl mx-auto px-6 pb-28">
+  <div id="tracks" class="max-w-5xl mx-auto px-6 pb-24">
     <div class="mb-8">
-      <h2 class="reveal font-display font-600 text-2xl tracking-tight">Choose your track</h2>
-      <p class="reveal text-muted mt-1">Tap any option to see what’s included.</p>
+      <h2 class="reveal font-display font-600 text-2xl tracking-tight">Choose your training track</h2>
+      <p class="reveal text-muted mt-1">Each card shows the career path it puts you on. Tap to see details and enroll.</p>
     </div>
 
     <div class="grid md:grid-cols-3 gap-5">
-
-      <!-- AWS -->
-      <article class="card reveal p-7" tabindex="0" role="button"
-               onclick="openCourse('aws')" onkeydown="if(event.key==='Enter')openCourse('aws')">
+      <article class="card reveal p-7" tabindex="0" role="button" onclick="openCourse('aws')" onkeydown="if(event.key==='Enter')openCourse('aws')">
         <span class="w-10 h-10 rounded-xl bg-aws/10 text-aws grid place-items-center font-display font-600 text-sm">AWS</span>
         <h3 class="font-display font-600 text-lg mt-5 mb-2">AWS Cloud Foundations</h3>
-        <p class="text-muted text-sm leading-relaxed">A beginner-friendly base in AWS core services, security, and pricing — tuned for the entry-level exam.</p>
-        <p class="text-accent text-sm font-500 mt-5">View track →</p>
+        <p class="text-muted text-sm leading-relaxed mb-4">Hands-on AWS training in core services, security, and pricing &mdash; built for the entry-level certification.</p>
+        <div class="path">
+          <span class="step">AWS CCP</span><span class="arrow">&rarr;</span>
+          <span class="step">Jr Cloud Engineer</span><span class="arrow">&rarr;</span>
+          <span class="step">Cloud Engineer</span><span class="arrow">&rarr;</span>
+          <span class="step">Senior / Architect</span>
+        </div>
+        <p class="text-accent text-sm font-500 mt-5">View track &rarr;</p>
       </article>
 
-      <!-- Azure -->
-      <article class="card reveal p-7" tabindex="0" role="button"
-               onclick="openCourse('azure')" onkeydown="if(event.key==='Enter')openCourse('azure')">
+      <article class="card reveal p-7" tabindex="0" role="button" onclick="openCourse('azure')" onkeydown="if(event.key==='Enter')openCourse('azure')">
         <span class="w-10 h-10 rounded-xl bg-azure/10 text-azure grid place-items-center font-display font-600 text-sm">AZ</span>
         <h3 class="font-display font-600 text-lg mt-5 mb-2">Azure Fundamentals</h3>
-        <p class="text-muted text-sm leading-relaxed">Microsoft Azure’s core concepts, governance, and cost management — a clean path to the AZ-900 exam.</p>
-        <p class="text-accent text-sm font-500 mt-5">View track →</p>
+        <p class="text-muted text-sm leading-relaxed mb-4">Structured Azure training in core services, governance, and cost &mdash; a clean path to the AZ-900.</p>
+        <div class="path">
+          <span class="step">AZ-900</span><span class="arrow">&rarr;</span>
+          <span class="step">Jr Azure Admin</span><span class="arrow">&rarr;</span>
+          <span class="step">Azure Admin</span><span class="arrow">&rarr;</span>
+          <span class="step">Solutions Architect</span>
+        </div>
+        <p class="text-accent text-sm font-500 mt-5">View track &rarr;</p>
       </article>
 
-      <!-- Multi-cloud -->
-      <article class="card reveal p-7" tabindex="0" role="button"
-               onclick="openCourse('multi')" onkeydown="if(event.key==='Enter')openCourse('multi')">
+      <article class="card reveal p-7" tabindex="0" role="button" onclick="openCourse('multi')" onkeydown="if(event.key==='Enter')openCourse('multi')">
         <span class="dotmark flex gap-1 items-center h-10">
           <span style="background:#4285F4"></span><span style="background:#EA4335"></span>
           <span style="background:#FBBC05"></span><span style="background:#34A853"></span>
         </span>
         <h3 class="font-display font-600 text-lg mt-5 mb-2">AWS CCP + Azure + GCP</h3>
-        <p class="text-muted text-sm leading-relaxed">The multi-cloud track: AWS Certified Cloud Practitioner alongside Azure and Google Cloud foundations.</p>
-        <p class="text-accent text-sm font-500 mt-5">View track →</p>
-      </article>
-
-      <!-- Package -->
-      <article class="card reveal p-7 md:col-span-3 flex flex-col md:flex-row md:items-center gap-6"
-               tabindex="0" role="button"
-               onclick="openCourse('package')" onkeydown="if(event.key==='Enter')openCourse('package')">
-        <div class="flex-1">
-          <p class="text-accent text-xs font-500 tracking-wide uppercase mb-2">Add-on package · not a course</p>
-          <h3 class="font-display font-600 text-xl mb-2">Resume, Interview &amp; Q&amp;A Assistance</h3>
-          <p class="text-muted text-sm leading-relaxed max-w-2xl">Passed the exam? Now get hired. A cloud-tailored resume rewrite, mock interviews, and a curated Q&amp;A bank for the questions you’ll actually face.</p>
+        <p class="text-muted text-sm leading-relaxed mb-4">Multi-cloud training: AWS Certified Cloud Practitioner plus Azure and Google Cloud foundations.</p>
+        <div class="path">
+          <span class="step">Tri-cloud certs</span><span class="arrow">&rarr;</span>
+          <span class="step">Multi-Cloud Engineer</span><span class="arrow">&rarr;</span>
+          <span class="step">Senior</span><span class="arrow">&rarr;</span>
+          <span class="step">Principal Architect</span>
         </div>
-        <span class="shrink-0 inline-flex items-center px-6 py-3 rounded-full bg-ink text-white font-500">Purchase →</span>
+        <p class="text-accent text-sm font-500 mt-5">View track &rarr;</p>
       </article>
 
+      <article class="card reveal p-7 md:col-span-3" tabindex="0" role="button" onclick="openCourse('package')" onkeydown="if(event.key==='Enter')openCourse('package')">
+        <div class="flex flex-col md:flex-row md:items-center gap-6">
+          <div class="flex-1">
+            <p class="text-accent text-xs font-500 tracking-wide uppercase mb-2">Career package &middot; not a course</p>
+            <h3 class="font-display font-600 text-xl mb-2">Resume, Interview &amp; Q&amp;A Assistance</h3>
+            <p class="text-muted text-sm leading-relaxed max-w-2xl mb-4">Certified and ready to move up? This package targets senior and leadership cloud roles &mdash; a resume rewrite, mock interviews, and a curated Q&amp;A bank for the questions those interviews actually ask.</p>
+            <div class="path">
+              <span class="step">Senior Cloud Engineer</span>
+              <span class="step">Staff Engineer</span>
+              <span class="step">Solutions Architect</span>
+              <span class="step">Principal Engineer</span>
+            </div>
+          </div>
+          <span class="shrink-0 inline-flex items-center px-6 py-3 rounded-full bg-ink text-white font-500">View &amp; enroll &rarr;</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ===================== ABOUT ===================== -->
 <section id="about" class="page">
   <div class="max-w-4xl mx-auto px-6 pt-24 pb-24">
-
     <div class="grid md:grid-cols-[220px_1fr] gap-12 items-center">
-      <!-- Photo (replace with your image) -->
       <div class="reveal flex justify-center">
         <div class="relative w-44 h-44">
           <div class="ring absolute inset-0 rounded-full"></div>
           <div class="absolute inset-[5px] rounded-full bg-surface grid place-items-center overflow-hidden">
             <!-- Replace with: <img src="your-photo.jpg" class="w-full h-full object-cover" /> -->
-            <div class="text-center">
-              <div class="font-display font-600 text-4xl text-accent">YN</div>
-              <p class="text-muted text-xs mt-1">your photo</p>
-            </div>
+            <div class="text-center"><div class="font-display font-600 text-4xl text-accent">K</div><p class="text-muted text-xs mt-1">your photo</p></div>
           </div>
         </div>
       </div>
 
       <div>
-        <p class="reveal text-accent text-sm font-500 mb-4">About your coach</p>
-        <h1 class="reveal font-display font-600 text-3xl md:text-4xl tracking-tight mb-5">Hi, I’m [Your Name].</h1>
+        <p class="reveal text-accent text-sm font-500 mb-4">About your instructor</p>
+        <h1 class="reveal font-display font-600 text-3xl md:text-4xl tracking-tight mb-5">Hi, I&rsquo;m Kunandy.</h1>
         <p class="reveal text-muted text-lg leading-relaxed mb-4">
-          I’m a cloud practitioner and instructor who’s walked the exact path you’re on — from first
-          certification to landing the role. I’ve built real infrastructure across AWS, Azure, and
-          Google Cloud, and I teach it the way I wish it had been taught to me: clear, hands-on, no fluff.
+          I&rsquo;m an AWS-certified cloud practitioner who builds the kind of infrastructure these exams
+          only describe. My background bridges business, information systems, and cybersecurity &mdash; so I
+          don&rsquo;t just teach the services, I teach how they fit together securely and why they matter to
+          the people paying for them.
+        </p>
+        <p class="reveal text-muted text-lg leading-relaxed mb-4">
+          I&rsquo;ve engineered real cloud environments and built multi-agent AI pipelines across AWS, Azure,
+          and Google Cloud. That hands-on work is exactly what shapes this training: every lesson comes
+          from something I&rsquo;ve actually deployed, not a textbook.
         </p>
         <p class="reveal text-muted text-lg leading-relaxed">
-          What I sell isn’t just study material — it’s a guided route through the certifications that
-          matter, backed by the resume and interview help that turns a badge into a job offer.
+          As a student-athlete, I learned to train with a plan and show up relentlessly &mdash; and I built
+          these tracks the same way. My goal is simple: get you certified, then get you hired, with a
+          clear roadmap and real interview preparation behind you every step.
         </p>
       </div>
     </div>
 
-    <!-- Steps -->
-    <div class="mt-20">
-      <h2 class="reveal font-display font-600 text-2xl tracking-tight mb-8">What you get, step by step</h2>
-      <div class="grid sm:grid-cols-2 gap-5">
-        <div class="reveal card p-6" style="cursor:default">
-          <span class="text-accent font-display font-600">01</span>
-          <h3 class="font-display font-600 text-lg mt-2 mb-1">Pick your track</h3>
-          <p class="text-muted text-sm leading-relaxed">AWS, Azure, or the full multi-cloud path with AWS CCP + Azure + GCP.</p>
-        </div>
-        <div class="reveal card p-6" style="cursor:default">
-          <span class="text-accent font-display font-600">02</span>
-          <h3 class="font-display font-600 text-lg mt-2 mb-1">Learn by doing</h3>
-          <p class="text-muted text-sm leading-relaxed">Guided lessons and real hands-on labs — not just slides. You’ll actually build things.</p>
-        </div>
-        <div class="reveal card p-6" style="cursor:default">
-          <span class="text-accent font-display font-600">03</span>
-          <h3 class="font-display font-600 text-lg mt-2 mb-1">Pass the exam</h3>
-          <p class="text-muted text-sm leading-relaxed">Practice questions, exam strategy, and a readiness check before you sit it.</p>
-        </div>
-        <div class="reveal card p-6" style="cursor:default">
-          <span class="text-accent font-display font-600">04</span>
-          <h3 class="font-display font-600 text-lg mt-2 mb-1">Get hired</h3>
-          <p class="text-muted text-sm leading-relaxed">The add-on package: resume rewrite, mock interviews, and a real-world Q&amp;A bank.</p>
-        </div>
-      </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-14">
+      <div class="reveal card p-5 text-center" style="cursor:default"><div class="font-display font-600 text-2xl text-accent">AWS</div><p class="text-muted text-xs mt-1">Certified Cloud Practitioner</p></div>
+      <div class="reveal card p-5 text-center" style="cursor:default"><div class="font-display font-600 text-2xl text-accent">3</div><p class="text-muted text-xs mt-1">Clouds: AWS &middot; Azure &middot; GCP</p></div>
+      <div class="reveal card p-5 text-center" style="cursor:default"><div class="font-display font-600 text-2xl text-accent">AI</div><p class="text-muted text-xs mt-1">Multi-agent pipelines built</p></div>
+      <div class="reveal card p-5 text-center" style="cursor:default"><div class="font-display font-600 text-2xl text-accent">1:1</div><p class="text-muted text-xs mt-1">Resume &amp; interview coaching</p></div>
     </div>
 
+    <div class="mt-16 text-center">
+      <h2 class="reveal font-display font-600 text-2xl tracking-tight mb-2">Ready to start?</h2>
+      <p class="reveal text-muted mb-6">Pick your track and see the career path it puts you on.</p>
+      <a onclick="go('home'); setTimeout(function(){document.getElementById('tracks').scrollIntoView({behavior:'smooth'})},150)"
+         class="reveal inline-block px-6 py-3 rounded-full bg-accent text-white font-500 hover:bg-accent/90 transition cursor-pointer">Pick your track &rarr;</a>
+    </div>
   </div>
 </section>
 
-<!-- ===================== FAQ ===================== -->
 <section id="faq" class="page">
   <div class="max-w-2xl mx-auto px-6 pt-24 pb-28">
     <p class="reveal text-accent text-sm font-500 text-center mb-4">Before you sit the exam</p>
     <h1 class="reveal font-display font-600 text-3xl md:text-4xl tracking-tight text-center mb-3">Exam questions, answered</h1>
     <p class="reveal text-muted text-center mb-12">The things people ask most before booking a cloud certification exam.</p>
-
     <div>
-      <div class="faq-item reveal">
-        <div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)">
-          <span class="font-500 pr-6">How long should I study before taking the exam?</span>
-          <span class="faq-icon text-accent text-xl leading-none">+</span>
-        </div>
-        <div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">Most people are ready for a foundational exam (AWS CCP, AZ-900) in 3–5 weeks of steady study — about an hour a day plus hands-on labs. The multi-cloud track takes a little longer since it covers three providers.</p></div>
-      </div>
-
-      <div class="faq-item reveal">
-        <div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)">
-          <span class="font-500 pr-6">Is the exam taken online or at a test center?</span>
-          <span class="faq-icon text-accent text-xl leading-none">+</span>
-        </div>
-        <div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">Both. You can sit most cloud exams from home with online proctoring, or in person at a testing center. We help you choose and walk through the check-in steps for each.</p></div>
-      </div>
-
-      <div class="faq-item reveal">
-        <div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)">
-          <span class="font-500 pr-6">What score do I need to pass?</span>
-          <span class="faq-icon text-accent text-xl leading-none">+</span>
-        </div>
-        <div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">It varies by provider — AWS and Azure foundational exams both pass around 700/1000. You don’t need perfection, just consistent readiness, which our practice checks confirm before you book.</p></div>
-      </div>
-
-      <div class="faq-item reveal">
-        <div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)">
-          <span class="font-500 pr-6">Do I need IT experience before starting?</span>
-          <span class="faq-icon text-accent text-xl leading-none">+</span>
-        </div>
-        <div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">No. The foundational tracks are built for beginners and start from the ground up. General computer comfort helps, but no prior cloud or coding background is required.</p></div>
-      </div>
-
-      <div class="faq-item reveal">
-        <div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)">
-          <span class="font-500 pr-6">How much does the exam itself cost?</span>
-          <span class="faq-icon text-accent text-xl leading-none">+</span>
-        </div>
-        <div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">Exam fees are paid to the provider, separate from coaching — foundational exams typically run about $100 USD. We’ll point you to any available discounts or voucher programs.</p></div>
-      </div>
-
-      <div class="faq-item reveal">
-        <div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)">
-          <span class="font-500 pr-6">What if I don’t pass on the first try?</span>
-          <span class="faq-icon text-accent text-xl leading-none">+</span>
-        </div>
-        <div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">It happens, and it’s not the end. Providers allow retakes after a short waiting period. We review what tripped you up, target those areas, and get you ready for round two.</p></div>
-      </div>
+      <div class="faq-item reveal"><div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)"><span class="font-500 pr-6">How long should I study before taking the exam?</span><span class="faq-icon text-accent text-xl leading-none">+</span></div><div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">Most people are ready for a foundational exam (AWS CCP, AZ-900) in 3&ndash;5 weeks of steady study &mdash; about an hour a day plus hands-on labs. The multi-cloud track takes a little longer since it covers three providers.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)"><span class="font-500 pr-6">Is the exam taken online or at a test center?</span><span class="faq-icon text-accent text-xl leading-none">+</span></div><div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">Both. You can sit most cloud exams from home with online proctoring, or in person at a testing center. We help you choose and walk through the check-in steps for each.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)"><span class="font-500 pr-6">What score do I need to pass?</span><span class="faq-icon text-accent text-xl leading-none">+</span></div><div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">It varies by provider &mdash; AWS and Azure foundational exams both pass around 700/1000. You don&rsquo;t need perfection, just consistent readiness, which our practice checks confirm before you book.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)"><span class="font-500 pr-6">Do I need IT experience before starting?</span><span class="faq-icon text-accent text-xl leading-none">+</span></div><div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">No. The foundational tracks are built for beginners and start from the ground up. General computer comfort helps, but no prior cloud or coding background is required.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)"><span class="font-500 pr-6">How much does the exam itself cost?</span><span class="faq-icon text-accent text-xl leading-none">+</span></div><div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">Exam fees are paid to the provider, separate from training &mdash; foundational exams typically run about $100 USD. We&rsquo;ll point you to any available discounts or voucher programs.</p></div></div>
+      <div class="faq-item reveal"><div class="faq-q flex items-center justify-between py-5" onclick="toggleFaq(this)"><span class="font-500 pr-6">What if I don&rsquo;t pass on the first try?</span><span class="faq-icon text-accent text-xl leading-none">+</span></div><div class="faq-a"><p class="pb-5 text-muted text-sm leading-relaxed">It happens, and it&rsquo;s not the end. Providers allow retakes after a short waiting period. We review what tripped you up, target those areas, and get you ready for round two.</p></div></div>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- ===================== FOOTER ===================== -->
 <footer class="border-t border-line">
   <div class="max-w-5xl mx-auto px-6 py-8 flex items-center justify-between">
-    <div class="flex items-center gap-2">
-      <span class="w-5 h-5 rounded bg-accent inline-block"></span>
-      <span class="font-display font-600">CloudPath</span>
-    </div>
-    <p class="text-muted text-sm">© 2026 · certify · get hired</p>
+    <div class="flex items-center gap-2"><span class="w-5 h-5 rounded bg-accent inline-block"></span><span class="font-display font-600">CloudPath</span></div>
+    <p class="text-muted text-sm">&copy; 2026 &middot; train &middot; certify &middot; get hired</p>
   </div>
 </footer>
 
-<!-- ===================== MODAL ===================== -->
 <div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
   <div class="modal-backdrop" onclick="closeModal()"></div>
   <div class="modal-card p-8">
-    <button onclick="closeModal()" class="absolute top-5 right-5 text-muted hover:text-ink text-lg">✕</button>
+    <button onclick="closeModal()" class="absolute top-5 right-5 text-muted hover:text-ink text-lg">&times;</button>
     <p id="m-chip" class="text-accent text-xs font-500 tracking-wide uppercase mb-2">Track</p>
     <h3 id="m-title" class="font-display font-600 text-2xl mb-3">Title</h3>
-    <p id="m-desc" class="text-muted text-sm leading-relaxed mb-6">Description</p>
-    <ul id="m-list" class="space-y-2.5 mb-7 text-sm"></ul>
+    <p id="m-desc" class="text-muted text-sm leading-relaxed mb-5">Description</p>
+    <ul id="m-list" class="space-y-2.5 mb-6 text-sm"></ul>
     <div class="flex items-center justify-between border-t border-line pt-5">
-      <span id="m-price" class="font-display font-600 text-2xl">$—</span>
-      <button class="px-6 py-3 rounded-full bg-accent text-white font-500 hover:bg-accent/90 transition">Enroll now</button>
+      <span id="m-price" class="font-display font-600 text-2xl">$&mdash;</span>
+      <div class="flex gap-2">
+        <button onclick="payStripe()" class="px-5 py-3 rounded-full bg-accent text-white font-500 hover:bg-accent/90 transition">Pay with card</button>
+        <button onclick="payPaypal()" class="px-4 py-3 rounded-full border border-line text-ink font-500 hover:border-ink/30 transition">PayPal</button>
+      </div>
     </div>
+    <p class="text-muted text-xs mt-3">Secure checkout &middot; powered by Stripe &amp; PayPal</p>
   </div>
 </div>
 
 <script>
   function go(id) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
     document.getElementById(id).classList.add('active');
-    document.querySelectorAll('.navlink').forEach(n => n.classList.toggle('active', n.dataset.nav === id));
+    document.querySelectorAll('.navlink').forEach(function(n){ n.classList.toggle('active', n.dataset.nav === id); });
     window.scrollTo({ top: 0, behavior: 'smooth' });
     runReveals();
   }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.1 });
-
   function runReveals() {
-    const active = document.querySelector('.page.active');
-    active.querySelectorAll('.reveal').forEach((el, i) => {
-      el.classList.remove('in');
-      io.observe(el);
-      setTimeout(() => el.classList.add('in'), 70 * i);
+    var active = document.querySelector('.page.active');
+    active.querySelectorAll('.reveal').forEach(function(el, i){
+      el.classList.remove('in'); io.observe(el);
+      setTimeout(function(){ el.classList.add('in'); }, 60 * i);
     });
   }
   window.addEventListener('load', runReveals);
-
   function toggleFaq(el) { el.closest('.faq-item').classList.toggle('open'); }
 
-  const COURSES = {
-    aws: {
-      chip: 'Track · Amazon Web Services',
-      title: 'AWS Cloud Foundations',
-      desc: 'A beginner-friendly path to your first AWS certification, focused on what the exam tests most.',
-      list: ['Core compute, storage &amp; networking', 'Security &amp; shared responsibility', 'Pricing, billing &amp; support', 'Hands-on labs in a real AWS account'],
-      price: '$149',
-    },
-    azure: {
-      chip: 'Track · Microsoft Azure',
-      title: 'Azure Fundamentals',
-      desc: 'Everything for the AZ-900 exam — Azure’s core services, governance, and cost management.',
-      list: ['Azure core services &amp; architecture', 'Identity, governance &amp; compliance', 'Pricing &amp; service-level agreements', 'Guided portal walkthroughs'],
-      price: '$149',
-    },
-    multi: {
-      chip: 'Track · Multi-Cloud',
-      title: 'AWS CCP + Azure + GCP',
-      desc: 'Earn your AWS Certified Cloud Practitioner while building foundations across Azure and Google Cloud.',
-      list: ['AWS Certified Cloud Practitioner prep', 'Azure fundamentals coverage', 'Google Cloud core concepts', 'Cross-cloud comparison &amp; strategy'],
-      price: '$299',
-    },
-    package: {
-      chip: 'Add-on package · not a course',
-      title: 'Resume, Interview & Q&A Assistance',
-      desc: 'Turn your certification into a job offer with hands-on career support built for cloud roles.',
-      list: ['Cloud-tailored resume rewrite', 'Two live mock interviews with feedback', 'Curated interview Q&amp;A bank', 'LinkedIn profile review'],
-      price: '$199',
-    },
+  var COURSES = {
+    aws:   { chip:'Track \u00b7 Amazon Web Services', title:'AWS Cloud Foundations',
+      desc:'Hands-on training for your first AWS certification, focused on what the exam tests most. Career path: AWS CCP \u2192 Junior Cloud Engineer \u2192 Cloud Engineer \u2192 Senior / Architect.',
+      list:['Core compute, storage &amp; networking','Security &amp; shared responsibility','Pricing, billing &amp; support','Hands-on labs in a real AWS account'], price:'$149' },
+    azure: { chip:'Track \u00b7 Microsoft Azure', title:'Azure Fundamentals',
+      desc:'Structured training for the AZ-900. Career path: AZ-900 \u2192 Junior Azure Admin \u2192 Azure Administrator \u2192 Cloud Solutions Architect.',
+      list:['Azure core services &amp; architecture','Identity, governance &amp; compliance','Pricing &amp; service-level agreements','Guided portal walkthroughs'], price:'$149' },
+    multi: { chip:'Track \u00b7 Multi-Cloud', title:'AWS CCP + Azure + GCP',
+      desc:'Earn your AWS CCP while building Azure and Google Cloud foundations. Career path: tri-cloud certs \u2192 Multi-Cloud Engineer \u2192 Senior \u2192 Principal Cloud Architect.',
+      list:['AWS Certified Cloud Practitioner prep','Azure fundamentals coverage','Google Cloud core concepts','Cross-cloud comparison &amp; strategy'], price:'$299' },
+    package:{ chip:'Career package \u00b7 not a course', title:'Resume, Interview &amp; Q&amp;A Assistance',
+      desc:'Built for senior and leadership cloud roles. Target positions: Senior Cloud Engineer, Staff Engineer, Cloud Solutions Architect, Principal Engineer.',
+      list:['Cloud-tailored resume rewrite','Two live mock interviews with feedback','Curated interview Q&amp;A bank','LinkedIn profile review'], price:'$199' },
   };
 
+  var currentCourse = null;
   function openCourse(key) {
-    const c = COURSES[key];
-    document.getElementById('m-chip').textContent = c.chip;
+    var c = COURSES[key]; currentCourse = key;
+    document.getElementById('m-chip').innerHTML = c.chip;
     document.getElementById('m-title').innerHTML = c.title;
     document.getElementById('m-desc').innerHTML = c.desc;
     document.getElementById('m-price').textContent = c.price;
-    const list = document.getElementById('m-list');
-    list.innerHTML = '';
-    c.list.forEach(item => {
-      const li = document.createElement('li');
+    var list = document.getElementById('m-list'); list.innerHTML = '';
+    c.list.forEach(function(item){
+      var li = document.createElement('li');
       li.className = 'flex items-start gap-2.5 text-muted';
-      li.innerHTML = '<span class="text-accent">✓</span><span>' + item + '</span>';
+      li.innerHTML = '<span class="text-accent">\u2713</span><span>' + item + '</span>';
       list.appendChild(li);
     });
     document.getElementById('modal').classList.add('open');
   }
   function closeModal() { document.getElementById('modal').classList.remove('open'); }
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+  var STRIPE_LINKS = {
+    // aws:'https://buy.stripe.com/...', azure:'...', multi:'...', package:'...'
+  };
+  var PAYPAL_LINKS = {
+    // aws:'https://www.paypal.com/ncp/payment/...', ...
+  };
+  function payStripe() {
+    var link = STRIPE_LINKS[currentCourse];
+    if (link) { window.location.href = link; return; }
+    alert('Add your Stripe payment link in the code to enable card checkout.');
+  }
+  function payPaypal() {
+    var link = PAYPAL_LINKS[currentCourse];
+    if (link) { window.location.href = link; return; }
+    alert('Add your PayPal payment link in the code to enable PayPal checkout.');
+  }
 </script>
 </body>
 </html>
